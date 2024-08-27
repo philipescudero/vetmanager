@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Visualizar Consultas</title>
+    <style type="text/css">
+        /*
+        *** FORMATAÇÕES GERAIS
+        */
+        .background{
+            background-color: rgb(47, 131, 47);
+        }
+        
+        h1{
+            color: red;
+            font-size: 2.5em;
+        }
+        
+        .estilo{
+            color: white;
+            background-color: green;
+            text-align: center;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-size: 1em;
+            font-family: 'Trebuchet MS', Helvetica, Sans-serif;
+        }
+        
+        .branco{
+            color: white;
+        }
+        /*
+        *** CABEÇALHO E LINKS
+        */
+        a {
+            text-decoration: none;
+        }
+        
+        a:link, a:visited { 
+            color: green;
+        }
+        
+        a:hover { 
+            text-decoration: underline;
+        }
+        
+        #area_logo{
+            padding: 20px;
+        }
+        
+        #area_cabecalho a:link, #area_cabecalho a:visited { /*formata o link que estiver dentro da área de cabeçalho*/
+            color: black;
+            padding: 8px 12px;
+        }
+        
+        #area_cabecalho a:hover { /*formata o link que estiver dentro da área de cabeçalho*/
+            color: red;
+            background-color: white;
+            text-decoration: none;
+        }
+        #area_cabecalho{
+            background-color: green;
+            padding: 15px;
+            text-align: center;
+        }
+        /*
+        *** CORPO PRINCIPAL DO CÓDIGO
+        */
+        #area_principal{
+            background-color: rgb(255, 255, 255);
+            width: 920px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+        
+        /*
+        *** TABELA
+        */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: green;
+            color: white;
+            font-weight: bold;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        /*
+        *** RODAPÉ
+        */
+        #rodape{
+            clear: both;
+            text-align: center;
+            background: #CCC;
+            padding: 15px;
+        }
+        
+        .borda{
+            font-size: 0.9em;
+            color: white;
+            border: green;
+            background-color: green;
+        }
+        
+        .fonte_menor{
+            font-size: 0.8em;
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="area_cabecalho">
+        <div id="area_logo">
+            <h1>Vet<span class="branco">Manager</span></h1>
+        </div>
+        <div id="area_menu">
+            <a href="{% url 'index' %}">Home</a>
+            <a href="{% url 'cadastro_animais' %}">Cadastro</a>
+            <a href="{% url 'registro_animais' %}">Registrar Consulta</a>
+            <a href="{% url 'visualizar_registros' %}">Visualizar Consulta</a>
+        </div>
+    </div>
+    <div id="area_principal">
+        <div>      
+            <h2 class="estilo">Consultas Registradas</h2>
+            <br>
+            <p>Nesta seção, você pode visualizar todas as consultas registradas. Abaixo está a lista completa de consultas com detalhes sobre o animal, data da consulta, diagnóstico, prescrição e observações.</p><br>
+        </div>
+        <div>  
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome do Animal</th>
+                        <th>Espécie do Animal</th> <!-- Adicionando coluna para a espécie -->
+                        <th>Data da Consulta</th>
+                        <th>Diagnóstico</th>
+                        <th>Prescrição</th>
+                        <th>Observações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for registro in registros %}
+                    <tr>
+                        <td>{{ registro.animal.nome }}</td>
+                        <td>{{ registro.animal.especie }}</td> <!-- Exibindo a espécie -->
+                        <td>{{ registro.data_consulta }}</td>
+                        <td>{{ registro.diagnostico }}</td>
+                        <td>{{ registro.prescricao }}</td>
+                        <td>{{ registro.observacoes }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="6">Nenhum registro encontrado.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div id="rodape">
+        Todos os direitos reservados
+    </div>
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registro de Animais</title>
+    <style type="text/css">
+        /*
+        *** FORMATAÇÕES GERAIS
+        */
+        .background{
+            background-color: rgb(47, 131, 47);
+        }
+        
+        h1{
+            color: red;
+            font-size: 2.5em;
+        }
+        
+        .estilo{
+            color: white;
+            background-color: green;
+            text-align: center;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-size: 1em;
+            font-family: 'Trebuchet MS', Helvetica, Sans-serif;
+        }
+        
+        .branco{
+            color: white;
+        }
+        /*
+        *** CABEÇALHO E LINKS
+        */
+        a {
+            text-decoration: none;
+        }
+        
+        a:link, a:visited { 
+            color: green;
+        }
+        
+        a:hover { 
+            text-decoration: underline;
+        }
+        
+        #area_logo{
+            padding: 20px;
+        }
+        
+        #area_cabecalho a:link, #area_cabecalho a:visited { /*formata o link que estiver dentro da área de cabeçalho*/
+            color: black;
+            padding: 8px 12px;
+        }
+        
+        #area_cabecalho a:hover { /*formata o link que estiver dentro da área de cabeçalho*/
+            color: red;
+            background-color: white;
+            text-decoration: none;
+        }
+        #area_cabecalho{
+            background-color: green;
+            padding: 15px;
+            text-align: center;
+        }
+        /*
+        *** CORPO PRINCIPAL DO CÓDIGO
+        */
+        #area_principal{
+            background-color: rgb(255, 255, 255);
+            width: 920px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+        
+        /*
+        *** FORMULÁRIO
+        */
+        form {
+            margin-top: 20px;
+        }
+        
+        form p {
+            margin-bottom: 10px;
+        }
+        
+        form label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: green;
+        }
+        
+        form input[type="text"],
+        form input[type="number"],
+        form textarea,
+        form select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 1em;
+        }
+        
+        form textarea {
+            height: 100px;
+        }
+        
+        form button {
+            background-color: green;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            text-transform: uppercase;
+            cursor: pointer;
+            font-size: 1em;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+        
+        form button:hover {
+            background-color: darkgreen;
+        }
+        
+        /*
+        *** RODAPÉ
+        */
+        #rodape{
+            clear: both;
+            text-align: center;
+            background: #CCC;
+            padding: 15px;
+        }
+        
+        .borda{
+            font-size: 0.9em;
+            color: white;
+            border: green;
+            background-color: green;
+        }
+        
+        .fonte_menor{
+            font-size: 0.8em;
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="area_cabecalho">
+        <div id="area_logo">
+            <h1>Vet<span class="branco">Manager</span></h1>
+        </div>
+        <div id="area_menu">
+            <a href="{% url 'index' %}">Home</a>
+            <a href="{% url 'cadastro_animais' %}">Cadastro</a>
+            <a href="{% url 'registro_animais' %}">Registrar Consulta</a>
+            <a href="{% url 'visualizar_registros' %}">Visualizar Consulta</a>
+        </div>
+    </div>
+    <div id="area_principal">
+        <div>
+            <h2 class="estilo">Registre aqui a sua consulta!</h2>
+            <br>
+            <p>Nesta seção, você pode registrar uma nova consulta para um animal previamente cadastrado. Insira a data da consulta, forneça um pré-diagnóstico do animal, detalhe a prescrição médica e adicione quaisquer observações relevantes. Após preencher todas as informações, clique em "Registrar" para salvar os dados da consulta.</p><br>                    
+        </div>
+        <div>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Registrar</button>
+            </form>
+        </div>
+    </div>
+    <div id="rodape">
+        Todos os direitos reservados
+    </div>
+</body>
+</html>

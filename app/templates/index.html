@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vet Manager</title>
+    <meta chartset="utf-8">
+    <style type="text/css">
+        /*Limpando formatações padrão*/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-size: 1em;
+    font-family: 'Trebuchet MS', Helvetica, Sans-serif;
+}
+/*
+****Formtação do menu / links
+*/
+a {
+    text-decoration: none;
+}
+
+a:link, a:visited { 
+    color: green;
+}
+
+a:hover { 
+    text-decoration: underline;
+}
+
+#area_cabecalho a:link, #area_cabecalho a:visited { /*formata o link que estiver dentro da área de cabeçalho*/
+    color: black;
+    padding: 8px 12px;
+}
+
+#area_cabecalho a:hover { /*formata o link que estiver dentro da área de cabeçalho*/
+    color: red;
+    background-color: white;
+    text-decoration: none;
+}
+/*
+****Layout
+*/
+#area_cabecalho{
+    background-color: green;
+    padding: 15px;
+    text-align: center;
+}
+
+#area_principal{
+    background-color: rgb(255, 255, 255);
+    width: 920px;
+    margin: 0 auto;
+    /*border: 1px solid red;*/
+    padding: 15px;
+}
+
+#area_postagens{
+    width: 660px; 
+    float: left;
+}
+
+
+#area_lateral{
+    width: 240px;
+    background-color: white;
+    /*border: 1px solid red;*/
+    float: right;
+}
+
+.postagem{
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: white;
+    /*border: 1px solid red;*/
+}
+
+.conteudo_lateral{
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 20px; /*espaçamento inferior*/
+}
+
+.postagem_lateral{
+    font-size: 0.8em;
+    padding: 5px;
+    /*border-bottom: 1px dotted #CCC; /*borda somente na parte
+                                       inferior da postagem lateral, 
+                                       ou apenas posso colocar um 
+                                       <hr>*/
+}
+
+#rodape{
+    clear: both;
+    text-align: center;
+    background: #CCC;
+    padding: 15px;
+}
+
+#area_logo, #area_menu{
+    padding: 10px;
+}
+
+/*
+****Formtações em gera
+*/
+
+h1{
+    color: #ff0000;
+    font-size:2.5em;
+}
+
+h2{
+    color: green;
+}
+
+h3{
+    color: #565656;
+    background-color: #CCC;
+    padding: 5px;
+}
+
+.fonte_menor{
+    font-size: 0.8em;
+}
+
+.branco{
+    color: white;
+}
+
+.borda {
+        font-size: 1.0em;
+        color: green;     
+    }
+
+/* Adicione isso ao seu CSS existente */
+ul.no-bullets {
+    list-style-type: none; /* Remove as bolinhas */
+    padding-left: 0; /* Remove o padding à esquerda */
+}
+
+.data_postagem{
+    font-size: 0.8em;
+    border-bottom: 1px solid #91bdbd;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    /*border: 1px solid red;*/
+    display: block; /*display: block; foi necessário devido ao span
+                      ter um comportamento inline, portanto é neces
+                      sário utilzar o display block para conseguir
+                      adicionar todas as definições corretamente.*/
+}
+
+
+    </style>
+</head>
+<body>
+    
+    <div id="area_cabecalho">
+            <div id="area_logo">
+                <h1>Vet<span class="branco">Manager
+
+                </span></h1>
+            </div>
+            <div id="area_menu">
+
+                <a href="{% url 'index' %}">Home</a>
+                <a href="{% url 'cadastro_animais' %}">Cadastro</a>
+                <a href="{% url 'registro_animais' %}">Registrar Consulta</a>
+                <a href="{% url 'visualizar_registros' %}">Visualizar Consulta</a>
+
+            </div>
+    </div>
+
+    <div id="area_principal">
+        <div id="area_postagens">
+
+            <!--Abertura postagem-->
+            <div class="postagem">
+                <h2>Quem Somos?</h2>
+                <span class="data_postagem">postado em 20 de agosto de 2024</span>
+                
+                    <p>
+                        Somos uma plataforma dedicada ao gerenciamento de animais comunitários e pacientes do Hospital Veterinário do Instituto Federal do Sul de Minas, Campus Muzambinho. Nosso sistema integra funcionalidades essenciais para a gestão eficiente da clínica veterinária, incluindo:
+                    </p><br>
+                    <ul  class="no-bullets">
+                        <li><strong><span class="borda">Cadastro de Animais e Tutores:</strong></span> <p class="fonte_menor">Facilita o registro completo de animais e seus responsáveis.</p></li><br>
+                        <li><strong><span class="borda">Registro de Fichas e Relatórios Médicos:</strong></span> <p class="fonte_menor">Mantém o histórico clínico detalhado e acessível.</p></li><br>
+                        <li><strong><span class="borda">Prescrições e Históricos de Visitas:</strong></span> <p class="fonte_menor">Organiza e armazena informações sobre tratamentos e atendimentos.</p></li><br>
+                        <li><strong><span class="borda">Identificação de Animais:</strong></span> <p class="fonte_menor">Oferece recursos para a identificação e acompanhamento dos animais.</p></li><br>
+                        <li><strong><span class="borda">Notificações de Vacinação:</strong></span> <p class="fonte_menor">Envia alertas sobre campanhas de vacinação e outros cuidados preventivos.</p></li><br>
+                    </ul>
+                    <img src="" alt="" width="600px">
+                    <p>
+                        Nosso objetivo é proporcionar uma gestão eficiente e integrada, assegurando o bem-estar dos animais e a excelência no atendimento veterinário.
+                    </p>
+                <a href="">Leia mais</a>
+            </div>
+            <!--Fechamento postagem-->
+            <!--Abertura postagem-->
+            <div class="postagem">
+                <h2>O que fazemos?</h2>
+                <span class="data_postagem">postado em 20 de agosto de 2024</span>
+                
+                <p>
+                    Na nossa plataforma, facilitamos o cuidado e a gestão de animais comunitários e pacientes do Hospital Veterinário do IFSULDEMINAS. Oferecemos ferramentas para cadastro de animais e tutores, registro de fichas clínicas, emissão de relatórios médicos, controle de prescrições, e acompanhamento do histórico de visitas ao hospital. Além disso, mantemos tutores informados sobre campanhas de vacinação e outros serviços da clínica veterinária, garantindo um suporte completo e eficiente para o bem-estar dos animais.
+                </p>
+                <a href="">Leia mais</a>
+            </div>
+            <!--Fechamento postagem-->
+
+        </div>
+        
+        <div id="area_lateral">
+            <!--Início conteúdo lateral-->
+            <div class="conteudo_lateral">
+                <h3>Postagens recentes</h3>
+                <div class="postagem_lateral">
+                    <p>
+                        A plataforma gerencia animais e pacientes do Hospital Veterinário do IFSULDEMINAS, permitindo cadastro, registros médicos, e envio de notificações, para melhorar o atendimento na clínica. 
+                    </p>
+                    <a href="">Tópico - Quem Somos?</a>
+                </div>
+                <hr>
+                <div class="postagem_lateral">
+                    <p>
+                        Desenvolvemos uma plataforma para gestão de animais comunitários e pacientes do Hospital Veterinário do IFSULDEMINAS, facilitando o cadastro, acompanhamento médico, e comunicação com tutores.
+                    </p>
+                    <a href="">Tópico - O que fazemos?</a>
+                </div>
+            </div>
+            <!--Fim do primeiro conteúdo lateral-->
+
+            <!--Início conteúdo lateral-->
+            <div class="conteudo_lateral">
+                <h3>Categorias</h3>
+                
+                <a href="{% url 'index' %}">Home</a><br>
+                <a href="{% url 'cadastro_animais' %}">Cadastro</a><br>
+                <a href="{% url 'registro_animais' %}">Registrar Consulta</a><br>
+                <a href="{% url 'visualizar_registros' %}">Visualizar Consulta</a>
+
+                </div>
+                
+
+
+            </div>
+            <!--Fim do primeiro conteúdo lateral-->
+
+        </div>
+
+        <div id="rodape">
+            Todos os direitos reservados
+        </div>
+    </div>
+
+
+</body>
+</html>

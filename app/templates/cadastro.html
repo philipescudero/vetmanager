@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cadastro de Animais</title>
+</head>
+<style type="text/css">
+    /*
+    *** FORMATAÇÕES GERAIS
+    */
+    .background {
+        background-color: rgb(47, 131, 47);
+    }
+    
+    h1 {
+        color: red;
+        font-size: 2.5em;
+    }
+    
+    .estilo {
+        color: white;
+        background-color: green;
+        text-align: center;
+    }
+    
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    
+    body {
+        font-size: 1em;
+        font-family: 'Trebuchet MS', Helvetica, Sans-serif;
+    }
+    
+    .branco {
+        color: white;
+    }
+    
+    /*
+    *** CABEÇALHO E LINKS
+    */
+    a {
+        text-decoration: none;
+    }
+    
+    a:link, a:visited { 
+        color: green;
+    }
+    
+    a:hover { 
+        text-decoration: underline;
+    }
+    
+    #area_logo {
+        padding: 20px;
+    }
+    
+    #area_cabecalho a:link, #area_cabecalho a:visited { /*formata o link que estiver dentro da área de cabeçalho*/
+        color: black;
+        padding: 8px 12px;
+    }
+    
+    #area_cabecalho a:hover { /*formata o link que estiver dentro da área de cabeçalho*/
+        color: red;
+        background-color: white;
+        text-decoration: none;
+    }
+    
+    #area_cabecalho {
+        background-color: green;
+        padding: 15px;
+        text-align: center;
+    }
+    
+    /*
+    *** CORPO PRINCIPAL DO CÓDIGO
+    */
+    #area_principal {
+        background-color: rgb(255, 255, 255);
+        width: 920px;
+        margin: 0 auto;
+        padding: 15px;
+    }
+    
+    /*
+    *** RODAPÉ
+    */
+    #rodape {
+        clear: both;
+        text-align: center;
+        background: #CCC;
+        padding: 15px;
+    }
+    
+    .borda {
+        font-size: 1.0em;
+        color: green;
+    }
+
+    ul.no-bullets {
+    list-style-type: none; /* Remove as bolinhas */
+    padding-left: 0; /* Remove o padding à esquerda */
+}
+    
+    .fonte_menor {
+        font-size: 0.8em;
+    }
+    
+    /* Estilização dos campos do formulário */
+    form {
+        margin-top: 20px;
+    }
+    
+    form input[type="text"], 
+    form input[type="number"], 
+    form textarea, 
+    form select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid green;
+        border-radius: 4px;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+    }
+    
+    form button {
+        background-color: green;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 1em;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    
+    form button:hover {
+        background-color: darkgreen;
+    }
+    
+    form label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+    
+    hr {
+        margin: 20px 0;
+    }
+</style>
+<body>
+    <div id="area_cabecalho">
+        <div id="area_logo">
+            <h1>Vet<span class="branco">Manager</span></h1>
+        </div>
+        <div id="area_menu">
+            <a href="{% url 'index' %}">Home</a>
+            <a href="{% url 'cadastro_animais' %}">Cadastro</a>
+            <a href="{% url 'registro_animais' %}">Registrar Consulta</a>
+            <a href="{% url 'visualizar_registros' %}">Visualizar Consulta</a>
+        </div>
+    </div>
+    <div id="area_principal">
+        <div>
+            <h2 class="estilo">Bem-vindo ao Cadastro de Animais!</h2>
+            <br>
+            <p>Nesta página, você pode registrar as informações iniciais do animal sob seus cuidados. Preencha os campos abaixo:</p><br>
+            <ul class="no-bullets">
+                <li><strong><span class="borda">Espécie do Animal:</span></strong><p class="fonte_menor">Informe a espécie.</p><br>
+                <li><strong><span class="borda">Nome do Animal:</span></strong><p class="fonte_menor">Informe o nome pelo qual o animal é conhecido.</p><br>
+                <li><strong><span class="borda">Idade do Animal:</span></strong><p class="fonte_menor">Indique a idade do animal em anos.</p><br>
+                <li><strong><span class="borda">Nome do Proprietário:</span></strong><p class="fonte_menor">Insira o nome do responsável ou proprietário do animal.</p><br>
+                <li><strong><span class="borda">Raça:</span></strong><p class="fonte_menor">&nbsp;Especifique a raça do animal. Se não souber, pode deixar como "Raça não definida".</p><br>
+                <li><strong><span class="borda">Características Distintivas:</span></strong><p class="fonte_menor">Descreva quaisquer características que ajudem a identificar o animal.</p><br>
+                <li>&nbsp;Depois de preencher todas as informações, clique em "Cadastrar" para salvar o registro.</li><br>
+            </ul>
+            <hr>
+        </div>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Cadastrar</button>
+        </form>
+    </div>
+    <div id="rodape">
+        Todos os direitos reservados
+    </div>
+</body>
+</html>
